@@ -1,0 +1,19 @@
+🏥 Hospital Management System – Case Study Description (From Your ER Diagram)
+
+This Hospital Management System database is designed to manage all essential clinical and operational activities of a hospital by connecting multiple interrelated entities. 
+The core of the system begins with PATIENT_INFO, which stores demographic, contact, medical insurance, and blood group details of each patient. 
+Patients are linked to various healthcare activities through relational entities, ensuring smooth flow of information across the hospital.
+
+Each patient has multiple ENCOUNTER_RECORDS, which capture every patient visit along with visit date, reasons, and the doctor involved. 
+Doctors are stored in the DOCTOR_INFO entity, which records specialization, contact details, and personal information. 
+An encounter may generate multiple PRESCRIPTIONS, where each prescription includes dosage, duration, instructions, and references a specific MEDICINE item. 
+Medicines are stored in the MEDICINE entity with price, description, manufacturer, and medicine name.
+
+The database also captures detailed clinical history through MEDICAL_HISTORY, which stores allergies, medications, and surgeries linked directly to each patient. 
+Diagnostic workflows are handled through DIAGNOSTIC_TEST and ENCOUNTER_DIAGNOSTIC_TEST_RESULT, where each encounter may include several tests, their test dates, results, and comparison with normal ranges. 
+Procedural workflows are managed by PROCEDURE_AND_SURGERIES and ENCOUNTER_PROCEDURES_RESULT, storing procedure type, department, created date, post-operative notes, and results for each performed procedure.
+
+Overall, this ER diagram represents a fully functional hospital data model covering patient information, encounters, prescriptions, medicines, diagnostic tests, test results, procedures, and surgery outcomes. 
+The combination of 1–1, 1–many, and many–many relationships provides a complete and accurate representation of real hospital operations, ensuring data consistency, traceability, 
+and a strong foundation for building an actual Hospital Management System.
+

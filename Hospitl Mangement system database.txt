@@ -1,0 +1,300 @@
+Hospitl Mangement system database
+
+mysql> use hospital;
+Database changed
+mysql> show tables;
++-----------------------------------+
+| Tables_in_hospital                |
++-----------------------------------+
+| diagnostic_tests                  |
+| doctors_info                      |
+| encounter_diagnostic_tests_result |
+| encounter_procedures_result       |
+| encounter_records                 |
+| medical_history                   |
+| medicine                          |
+| patient_info                      |
+| prescription                      |
+| procedure_and_surgeries           |
++-----------------------------------+
+10 rows in set (0.03 sec)
+
+mysql> select * from diagnostic_tests;
++------+----------------------------+-----------------------------------------------------------+-------------------+
+| T_id | Test_Type                  | Description                                               | Normal_range      |
++------+----------------------------+-----------------------------------------------------------+-------------------+
+|    1 | Complete Blood Count (CBC) | Measures red and white blood cells, hemoglobin, platelets | 70-110 mg/dL      |
+|    2 | Liver Function Test (LFT)  | Evaluates liver enzymes and bilirubin levels              | 3.5-5.5 mmol/L    |
+|    3 | Kidney Function Test (KFT) | Assesses urea and creatinine levels                       | 12-16 g/dL        |
+|    4 | Blood Sugar (Fasting)      | Measures fasting glucose levels                           | 4,000-11,000 /µL  |
+|    5 | Urine Routine Test         | Examines urine for infection and abnormalities            | 7-20 mg/dL        |
+|    6 | X-Ray Chest                | Detects lung, heart, or bone issues in the chest          | 0.6-1.2 mg/dL     |
+|    7 | MRI Brain                  | Detailed brain imaging for neurological diagnosis         | 135-145 mmol/L    |
+|    8 | CT Abdomen                 | Cross-sectional imaging of abdominal organs               | 3.5-5.0 mmol/L    |
+|    9 | ECG                        | Records heart electrical activity                         | 98-106 mmol/L     |
+|   10 | Echocardiogram             | Ultrasound test of heart structure and function           | 8.5-10.2 mg/dL    |
+|   11 | Thyroid Profile            | Measures T3, T4, and TSH hormone levels                   | 1.5-4.5 mg/dL     |
+|   12 | Lipid Profile              | Assesses cholesterol and triglycerides levels             | 70-100 IU/L       |
+|   13 | Vitamin D Test             | Measures Vitamin D levels in the blood                    | 10-40 U/L         |
+|   14 | HIV Test                   | Screens for HIV infection                                 | 7-56 U/L          |
+|   15 | Hepatitis B Test           | Detects Hepatitis B surface antigen                       | 150-400 /µL       |
+|   16 | COVID-19 RTPCR             | Detects active SARS-CoV-2 virus infection                 | 3.5-5.0 g/dL      |
+|   17 | Pregnancy Test             | Checks for hCG hormone in urine/blood                     | 280-300 mOsm/kg   |
+|   18 | Stool Routine Test         | Examines stool for infection and digestion issues         | 11.6-14.6 seconds |
+|   19 | Allergy Panel Test         | Identifies allergic reactions to common allergens         | 25-35 seconds     |
+|   20 | Bone Density Scan          | Measures bone strength and risk of osteoporosis           | 0-20 mm/hr        |
++------+----------------------------+-----------------------------------------------------------+-------------------+
+20 rows in set (0.09 sec)
+
+mysql> select * from doctors_info;
++------+--------------+------------+--------+------------------+
+| D_id | D_Name       | Mobile_No  | Gender | Specialisation   |
++------+--------------+------------+--------+------------------+
+|  101 | Dr. Sharma   | 9876500000 | Male   | Cardiology       |
+|  102 | Dr. Mehta    | 9876511111 | Male   | Orthopedics      |
+|  103 | Dr. Reddy    | 9876522222 | Male   | Neurology        |
+|  104 | Dr. Gupta    | 9876533333 | Female | Pediatrics       |
+|  105 | Dr. Nair     | 9876544444 | Female | Dermatology      |
+|  106 | Dr. Patel    | 9876555555 | Male   | ENT              |
+|  107 | Dr. Desai    | 9876566666 | Male   | Ophthalmology    |
+|  108 | Dr. Kulkarni | 9876577777 | Female | Oncology         |
+|  109 | Dr. Vardhan  | 9876588888 | Male   | Gastroenterology |
+|  110 | Dr. Verma    | 9876599999 | Female | Psychiatry       |
+|  111 | Dr. Thakur   | 9876600001 | Male   | Radiology        |
+|  112 | Dr. Kapoor   | 9876600002 | Female | Nephrology       |
+|  113 | Dr. Yadav    | 9876600003 | Male   | Endocrinology    |
+|  114 | Dr. Saxena   | 9876600004 | Female | Pathology        |
+|  115 | Dr. Rao      | 9876600005 | Male   | Pulmonology      |
+|  116 | Dr. Malhotra | 9876600006 | Male   | General Medicine |
+|  117 | Dr. Joshi    | 9876600007 | Female | Gynecology       |
+|  118 | Dr. Kumar    | 9876600008 | Male   | Urology          |
+|  119 | Dr. Singh    | 9876600009 | Male   | Surgery          |
+|  120 | Dr. Chawla   | 9876600010 | Female | Dentistry        |
++------+--------------+------------+--------+------------------+
+20 rows in set (0.03 sec)
+
+mysql> select * from encounter_diagnostic_tests_result;
++---------+--------------+---------+---------------+------------+
+| EDTR_id | Encounter_id | Test_id | Result        | Test_Date  |
++---------+--------------+---------+---------------+------------+
+|       1 |            1 |       1 | Normal        | 2025-01-14 |
+|       2 |            2 |       2 | Slightly High | 2025-01-26 |
+|       3 |            3 |       3 | Positive      | 2025-02-06 |
+|       4 |            4 |       4 | Normal        | 2025-02-11 |
+|       5 |            5 |       5 | Low           | 2025-02-21 |
+|       6 |            6 |       6 | Abnormal      | 2025-02-26 |
+|       7 |            7 |       7 | Elevated      | 2025-03-02 |
+|       8 |            8 |       8 | Normal        | 2025-03-06 |
+|       9 |            9 |       9 | Negative      | 2025-03-11 |
+|      10 |           10 |      10 | Normal        | 2025-03-16 |
+|      11 |            1 |       5 | Slightly Low  | 2025-04-05 |
+|      12 |            2 |       6 | Normal        | 2025-04-06 |
+|      13 |            3 |       7 | Elevated      | 2025-04-07 |
+|      14 |            4 |       8 | Normal        | 2025-04-08 |
+|      15 |            5 |       9 | Negative      | 2025-04-09 |
+|      16 |            6 |      10 | Normal        | 2025-04-10 |
+|      17 |            7 |       1 | Normal        | 2025-04-11 |
+|      18 |            8 |       2 | High          | 2025-04-12 |
+|      19 |            9 |       3 | Positive      | 2025-04-13 |
+|      20 |           10 |       4 | Normal        | 2025-04-14 |
++---------+--------------+---------+---------------+------------+
+20 rows in set (0.03 sec)
+
+mysql> select * from encounter_procedures_result;
++--------+--------------+--------------+----------------+-------------------------+------------------------------------------------+
+| EPR_id | Encounter_id | Procedure_id | Procedure_Date | Result                  | Post_Operative_notes                           |
++--------+--------------+--------------+----------------+-------------------------+------------------------------------------------+
+|      1 |            1 |            1 | 2025-01-13     | Successful              | Patient stable, advised rest for 3 days        |
+|      2 |            2 |            2 | 2025-01-25     | Normal findings         | No further follow-up required                  |
+|      3 |            3 |            3 | 2025-02-05     | Minor inflammation      | Apply cold compress, review after 48 hours     |
+|      4 |            4 |            4 | 2025-02-10     | No abnormalities        | Routine check recommended after one week       |
+|      5 |            5 |            5 | 2025-02-20     | Surgery completed       | Pain medication prescribed                     |
+|      6 |            6 |            6 | 2025-02-25     | Stitches applied        | Keep area clean and dry                        |
+|      7 |            7 |            7 | 2025-03-01     | Minor complications     | Patient advised to avoid heavy activities      |
+|      8 |            8 |            8 | 2025-03-05     | Good recovery           | Continue antibiotics for 5 days                |
+|      9 |            9 |            9 | 2025-03-10     | Follow-up needed        | Scheduled follow-up next week                  |
+|     10 |           10 |           10 | 2025-03-15     | Test sample sent        | Awaiting lab analysis results                  |
+|     11 |            1 |            2 | 2025-04-05     | Normal healing          | Healing well, continue routine care            |
+|     12 |            2 |            3 | 2025-04-06     | Minor swelling          | Swelling expected to reduce in 24 hours        |
+|     13 |            3 |            4 | 2025-04-07     | Improved condition      | Recommend light exercises only                 |
+|     14 |            4 |            5 | 2025-04-08     | Successful removal      | Avoid touching the operated area               |
+|     15 |            5 |            6 | 2025-04-09     | Routine checkup done    | Prescription issued for pain relief            |
+|     16 |            6 |            7 | 2025-04-10     | Sutures clean           | Daily wound cleaning advised                   |
+|     17 |            7 |            8 | 2025-04-11     | Observation recommended | Observation required for next 48 hours         |
+|     18 |            8 |            9 | 2025-04-12     | No complications        | Normal condition, no restrictions              |
+|     19 |            9 |           10 | 2025-04-13     | Minor infection treated | Take antibiotics and return if fever appears   |
+|     20 |           10 |            1 | 2025-04-14     | Good recovery progress  | Patient improving, continue prescribed routine |
++--------+--------------+--------------+----------------+-------------------------+------------------------------------------------+
+20 rows in set (0.03 sec)
+
+mysql> select * from encounter_records;
++-----------+------------+-----------+------------+-----------------------------+
+| Record_id | Patient_id | Doctor_id | Visit_Date | Reasons                     |
++-----------+------------+-----------+------------+-----------------------------+
+|         1 |          1 |       101 | 2025-01-05 | Routine checkup             |
+|         2 |          2 |       101 | 2025-01-06 | Fever and headache          |
+|         3 |          3 |       101 | 2025-01-07 | Cough and cold              |
+|         4 |          4 |       102 | 2025-01-08 | Stomach pain                |
+|         5 |          4 |       103 | 2025-01-10 | Follow-up consultation      |
+|         6 |          5 |       104 | 2025-01-09 | Back pain                   |
+|         7 |          5 |       104 | 2025-02-01 | Blood pressure check        |
+|         8 |          6 |       105 | 2025-01-11 | Skin allergy                |
+|         9 |          7 |       105 | 2025-01-12 | Chest discomfort            |
+|        10 |          8 |       106 | 2025-01-13 | Diabetes checkup            |
+|        11 |          8 |       107 | 2025-01-20 | Routine health review       |
+|        12 |          9 |       108 | 2025-01-14 | Eye irritation              |
+|        13 |          9 |       108 | 2025-02-02 | Follow-up for eye treatment |
+|        14 |         10 |       109 | 2025-01-15 | Joint pain                  |
+|        15 |         11 |       109 | 2025-01-16 | Throat infection            |
+|        16 |         12 |       110 | 2025-01-17 | Migraine issues             |
+|        17 |         12 |       110 | 2025-02-05 | Follow-up for migraine      |
+|        18 |         13 |       111 | 2025-01-18 | High fever                  |
+|        19 |         14 |       111 | 2025-01-19 | Shortness of breath         |
+|        20 |         15 |       112 | 2025-01-20 | General weakness            |
+|        21 |         15 |       113 | 2025-01-22 | Follow-up after medication  |
++-----------+------------+-----------+------------+-----------------------------+
+21 rows in set (0.03 sec)
+
+mysql> select * from medical_history;
++------+------+----------------------+-------------------------+---------------------------------+
+| M_id | P_id | Allergies            | Medications             | Surgeries                       |
++------+------+----------------------+-------------------------+---------------------------------+
+|    1 |    1 | Pollen Allergy       | Cetirizine              | Appendix removal                |
+|    2 |    1 | Dust Allergy         | Inhaler                 | Sinus surgery                   |
+|    3 |    2 | NULL                 | Multivitamin            | No past surgery                 |
+|    4 |    3 | Peanut Allergy       | EpiPen                  | Emergency allergy treatment     |
+|    5 |    4 | Penicillin Allergy   | Antibiotics alternative | Minor infection procedure       |
+|    6 |    4 | Seafood Allergy      | Antihistamine           | Skin patch test procedure       |
+|    7 |    5 | NULL                 | Pain Reliever           | No surgery reported             |
+|    8 |    6 | Latex Allergy        | Steroid cream           | Dermatology procedure           |
+|    9 |    7 | NULL                 | NULL                    | No medical surgery              |
+|   10 |    8 | Insect Sting Allergy | EpiPen                  | Sting treatment procedure       |
+|   11 |    8 | Drug Allergy         | Alternative meds        | Drug reaction treatment         |
+|   12 |    9 | Gluten Intolerance   | Gluten-free diet        | Gastro test procedure           |
+|   13 |   10 | NULL                 | Eye Drops               | Eye checkup procedure           |
+|   14 |   11 | Egg Allergy          | Avoidance               | Food allergy management         |
+|   15 |   12 | Cat Dander Allergy   | Inhaler                 | Respiratory treatment procedure |
+|   16 |   12 | Pollen Allergy       | Antihistamine           | Seasonal allergy treatment      |
+|   17 |   13 | NULL                 | Cough Syrup             | Cough treatment procedure       |
+|   18 |   14 | Aspirin Allergy      | Paracetamol             | Pain management procedure       |
+|   19 |   15 | Shellfish Allergy    | Antihistamine           | Allergy treatment               |
+|   20 |   15 | Dust Mite Allergy    | Nasal Spray             | Nasal cleaning procedure        |
+|   21 |   16 | NULL                 | Vitamin D Supplement    | Vitamin deficiency evaluation   |
+|   22 |   17 | Soy Allergy          | Avoidance               | Food allergy management         |
+|   23 |   18 | Perfume Allergy      | Mask                    | Respiratory therapy procedure   |
+|   24 |   18 | Mold Allergy         | Antifungal              | Fungal infection removal        |
+|   25 |   19 | NULL                 | BP Medicine             | Routine medical procedure       |
+|   26 |   20 | Lactose Intolerance  | Lactose-free diet       | Dietary management session      |
++------+------+----------------------+-------------------------+---------------------------------+
+26 rows in set (0.05 sec)
+
+mysql> select * from medicine;
++-------------+--------------------+----------------------------+-------+------------------------------------------------+----------------+
+| Medicine_id | Medicine_name      | Contains                   | Price | Description                                    | Manufacturer   |
++-------------+--------------------+----------------------------+-------+------------------------------------------------+----------------+
+|           1 | Paracetamol        | Paracetamol 500mg          |    25 | Used to reduce fever and relieve pain          | Cipla          |
+|           2 | Amoxicillin        | Amoxicillin 500mg          |   120 | Antibiotic used to treat bacterial infections  | Sun Pharma     |
+|           3 | Ibuprofen          | Ibuprofen 400mg            |    60 | Pain reliever and anti-inflammatory            | Dr. Reddy      |
+|           4 | Azithromycin       | Azithromycin 500mg         |   150 | Antibiotic for respiratory and skin infections | Zydus          |
+|           5 | Cetrizine          | Cetirizine 10mg            |    30 | Used to treat allergy and cold symptoms        | Cipla          |
+|           6 | Pantoprazole       | Pantoprazole 40mg          |    85 | Reduces stomach acid and treats GERD           | Lupin          |
+|           7 | Metformin          | Metformin 500mg            |    50 | Used to control high blood sugar in diabetes   | Sun Pharma     |
+|           8 | Losartan           | Losartan Potassium 50mg    |    70 | Used to treat high blood pressure              | Torrent Pharma |
+|           9 | Atorvastatin       | Atorvastatin 10mg          |    95 | Lowers cholesterol levels                      | Pfizer         |
+|          10 | Omeprazole         | Omeprazole 20mg            |    75 | Reduces acid and treats stomach ulcers         | Cipla          |
+|          11 | Dolo 650           | Paracetamol 650mg          |    35 | Pain and fever relief tablet                   | Micro Labs     |
+|          12 | Hydroxyzine        | Hydroxyzine HCl 25mg       |    55 | Used for anxiety, nausea, and allergies        | Dr. Reddy      |
+|          13 | Levofloxacin       | Levofloxacin 500mg         |   145 | Broad-spectrum antibiotic                      | Cipla          |
+|          14 | Clopidogrel        | Clopidogrel 75mg           |   110 | Prevents blood clots after heart attack        | Sun Pharma     |
+|          15 | Aspirin            | Aspirin 75mg               |    40 | Blood thinner for heart protection             | Bayer          |
+|          16 | Salbutamol Inhaler | Salbutamol Sulphate 100mcg |   220 | Used for asthma and breathing problems         | Cipla          |
+|          17 | Insulin            | Human Insulin 100IU        |   480 | Controls blood sugar in diabetic patients      | Novo Nordisk   |
+|          18 | Prednisolone       | Prednisolone 10mg          |    65 | Steroid for inflammation and allergies         | Lupin          |
+|          19 | Ranitidine         | Ranitidine 150mg           |    45 | Used for acidity and ulcer relief              | Zydus          |
+|          20 | Multivitamin       | Multivitamin + Minerals    |    90 | Improves vitamin and mineral deficiency        | GSK            |
++-------------+--------------------+----------------------------+-------+------------------------------------------------+----------------+
+20 rows in set (0.00 sec)
+
+mysql> select * from patient_info;
++------+-----------------+------------+--------+-----------+------+------------+-------------+------------+-------------------+
+| P_id | P_Name          | Contact_No | Gender | Insurance | Age  | Address    | Blood_Group | DOB        | Emergency_Contact |
++------+-----------------+------------+--------+-----------+------+------------+-------------+------------+-------------------+
+|    1 | Ravi Kumar      | 9876543210 | Male   | Yes       |   32 | Mumbai     | O+          | 1993-04-12 | 9876543200        |
+|    2 | Anjali Sharma   | 9988776655 | Female | No        |   28 | Pune       | A+          | 1997-02-20 | 9988776600        |
+|    3 | Vikram Singh    | 9123456780 | Male   | Yes       |   40 | Delhi      | B+          | 1985-10-05 | 9123456701        |
+|    4 | Pooja Patel     | 9345678901 | Female | Yes       |   26 | Ahmedabad  | AB+         | 1999-07-15 | 9345678900        |
+|    5 | Arjun Reddy     | 9765432109 | Male   | No        |   35 | Hyderabad  | O-          | 1990-11-03 | 9765432100        |
+|    6 | Neha Joshi      | 9876501234 | Female | Yes       |   30 | Bengaluru  | A-          | 1994-05-21 | 9876501200        |
+|    7 | Suresh Mehta    | 9654321987 | Male   | Yes       |   45 | Surat      | B-          | 1980-12-30 | 9654321900        |
+|    8 | Kiran Rao       | 9123009876 | Female | No        |   29 | Chennai    | AB-         | 1996-08-22 | 9123009800        |
+|    9 | Raj Malhotra    | 9876123450 | Male   | Yes       |   38 | Kolkata    | O+          | 1987-03-12 | 9876123400        |
+|   10 | Priya Nair      | 9345098765 | Female | Yes       |   27 | Kochi      | A+          | 1998-01-19 | 9345098700        |
+|   11 | Amit Desai      | 9123450098 | Male   | No        |   36 | Indore     | B+          | 1989-06-17 | 9123450000        |
+|   12 | Shreya Kulkarni | 9786543210 | Female | Yes       |   24 | Nashik     | AB+         | 2001-03-14 | 9786543200        |
+|   13 | Harsh Vardhan   | 9456789012 | Male   | Yes       |   42 | Jaipur     | O-          | 1982-09-25 | 9456789000        |
+|   14 | Meena Gupta     | 9345678123 | Female | No        |   31 | Varanasi   | A-          | 1993-05-08 | 9345678100        |
+|   15 | Aditya Jain     | 9678901234 | Male   | Yes       |   34 | Lucknow    | B-          | 1991-04-02 | 9678901200        |
+|   16 | Sneha Verma     | 9765432189 | Female | Yes       |   25 | Nagpur     | AB-         | 2000-02-11 | 9765432101        |
+|   17 | Karan Thakur    | 9345001122 | Male   | No        |   37 | Bhopal     | O+          | 1988-07-09 | 9345001100        |
+|   18 | Divya Kapoor    | 9876001122 | Female | Yes       |   29 | Chandigarh | A+          | 1996-11-23 | 9876001100        |
+|   19 | Manoj Yadav     | 9456009871 | Male   | Yes       |   41 | Patna      | B+          | 1983-10-14 | 9456009800        |
+|   20 | Ritika Saxena   | 9765098765 | Female | No        |   23 | Delhi      | O-          | 2002-06-05 | 9765098700        |
++------+-----------------+------------+--------+-----------+------+------------+-------------+------------+-------------------+
+20 rows in set (0.01 sec)
+
+
+mysql> select * from prescription;
++-----------------+--------------+-------------+---------+----------+---------------------+-----------------+
+| Prescription_id | Encounter_id | Medicine_id | Dosage  | Duration | Instructions        | Prescribed_Date |
++-----------------+--------------+-------------+---------+----------+---------------------+-----------------+
+|               1 |            1 |           1 | Tablet  | 5 days   | Take after meals    | 2025-01-12      |
+|               2 |            1 |           2 | Capsule | 3 days   | Morning only        | 2025-01-12      |
+|               3 |            2 |           3 | Tablet  | 7 days   | Before sleep        | 2025-02-01      |
+|               4 |            2 |           4 | Tablet  | 10 days  | Take with water     | 2025-02-01      |
+|               5 |            3 |           5 | Tablet  | 15 days  | After breakfast     | 2025-03-05      |
+|               6 |            4 |           6 | Tablet  | 5 days   | Avoid spicy food    | 2025-03-10      |
+|               7 |            5 |           7 | Tablet  | 10 days  | Twice a day         | 2025-03-15      |
+|               8 |            6 |           8 | Tablet  | 3 days   | For eye infection   | 2025-03-18      |
+|               9 |            7 |           9 | Tablet  | 5 days   | Pain relief         | 2025-03-20      |
+|              10 |            8 |          10 | Tablet  | 7 days   | Before lunch        | 2025-03-22      |
+|              11 |            9 |           3 | Tablet  | 7 days   | Take after lunch    | 2025-03-25      |
+|              12 |           10 |           4 | Tablet  | 10 days  | Avoid milk products | 2025-03-26      |
+|              13 |            3 |           5 | Tablet  | 5 days   | Before bed          | 2025-03-27      |
+|              14 |            6 |           2 | Capsule | 14 days  | After breakfast     | 2025-03-28      |
+|              15 |            7 |           6 | Tablet  | 3 days   | With water          | 2025-03-29      |
+|              16 |            8 |           7 | Tablet  | 5 days   | Before meals        | 2025-03-30      |
+|              17 |            1 |           8 | Tablet  | 7 days   | Twice a day         | 2025-04-01      |
+|              18 |            2 |           9 | Tablet  | 10 days  | Pain control        | 2025-04-02      |
+|              19 |            4 |          10 | Tablet  | 15 days  | After lunch         | 2025-04-03      |
+|              20 |            5 |           1 | Tablet  | 7 days   | Take with water     | 2025-04-04      |
++-----------------+--------------+-------------+---------+----------+---------------------+-----------------+
+20 rows in set (0.00 sec)
+mysql> select * from procedure_and_surgeries;
++--------------+-------------------------+----------------+------------------+--------------+
+| Procedure_id | Procedure_Name          | Procedure_Type | Department       | Created_Date |
++--------------+-------------------------+----------------+------------------+--------------+
+|            1 | Appendectomy            | Surgical       | General Surgery  | 2025-01-05   |
+|            2 | Cataract Surgery        | Surgical       | Ophthalmology    | 2025-01-06   |
+|            3 | Angioplasty             | Surgical       | Cardiology       | 2025-01-07   |
+|            4 | Colonoscopy             | Diagnostic     | Gastroenterology | 2025-01-08   |
+|            5 | Endoscopy               | Diagnostic     | Gastroenterology | 2025-01-09   |
+|            6 | Hernia Repair           | Surgical       | General Surgery  | 2025-01-10   |
+|            7 | Knee Replacement        | Surgical       | Orthopedics      | 2025-01-11   |
+|            8 | Hip Replacement         | Surgical       | Orthopedics      | 2025-01-12   |
+|            9 | Tonsillectomy           | Surgical       | ENT              | 2025-01-13   |
+|           10 | Cesarean Section        | Surgical       | Gynecology       | 2025-01-14   |
+|           11 | Gallbladder Removal     | Surgical       | General Surgery  | 2025-01-15   |
+|           12 | Coronary Bypass Surgery | Surgical       | Cardiology       | 2025-01-16   |
+|           13 | Dialysis                | Therapeutic    | Nephrology       | 2025-01-17   |
+|           14 | Skin Biopsy             | Diagnostic     | Dermatology      | 2025-01-18   |
+|           15 | MRI Scan                | Diagnostic     | Radiology        | 2025-01-19   |
+|           16 | CT Scan                 | Diagnostic     | Radiology        | 2025-01-20   |
+|           17 | Pacemaker Implantation  | Surgical       | Cardiology       | 2025-01-21   |
+|           18 | TURP (Prostate Surgery) | Surgical       | Urology          | 2025-01-22   |
+|           19 | Laparoscopy             | Diagnostic     | General Surgery  | 2025-01-23   |
+|           20 | Blood Transfusion       | Therapeutic    | Hematology       | 2025-01-24   |
++--------------+-------------------------+----------------+------------------+--------------+
+20 rows in set (0.04 sec)
+
+mysql>
+
